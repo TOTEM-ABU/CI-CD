@@ -8,8 +8,13 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      -name: Repositorylarni yuklash
-      uses: actions/checkout@v4
+      - name: Repositorylarni yuklash
+        uses: actions/checkout@v4
 
-      -name: node_modulesni yuklab olish 
-      uses: npm install
+      - name: Node versiyasini o‘rnatish
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: node_modulesni yuklab olish
+        run: npm install
