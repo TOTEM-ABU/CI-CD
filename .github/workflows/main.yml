@@ -5,16 +5,23 @@ on:
     branches: [main]
 
 jobs:
-  Test:
-    runs-on: ubuntu-latest
+  Test-and-build:
+    runs-on: windows-latest
+
     steps:
       - name: Repositorylarni yuklash
         uses: actions/checkout@v4
 
-      - name: Node versiyasini o‘rnatish
+      - name: Node.js versiyasini o‘rnatish
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # kerakli versiyani yozing
+          node-version: '18' 
 
-      - name: node_modulesni yuklab olish
+      - name: node_modules'ni yuklab olish
         run: npm install
+
+      - name: Test buyrug'ini ishga tushurish
+        run: npm run test
+
+      - name: Build qilish
+        run: npm run build
